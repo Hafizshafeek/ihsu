@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My IHSU ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ff6a88, #ff99ac);
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+h1 {
+    margin-bottom: 10px;
+}
+
+#countdown {
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.card {
+    width: 80%;
+    max-width: 600px;
+    background: rgba(255,255,255,0.15);
+    padding: 30px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+
+#typewriter {
+    font-size: 18px;
+    line-height: 1.6;
+    min-height: 120px;
+    white-space: pre-line;
+}
+
+.cursor {
+    display: inline-block;
+    width: 3px;
+    background: white;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.heart {
+    position: absolute;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<h1>For My IHSU ❤️</h1>
+
+<div id="countdown"></div>
+
+<div class="card">
+    <div id="typewriter"></div><span class="cursor"></span>
+</div>
+
+<script>
+
+// COUNTDOWN TIMER
+const countdown = document.getElementById("countdown");
+const targetDate = new Date("Feb 14, 2026 00:00:00").getTime();
+
+setInterval(() => {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance < 0) {
+        countdown.innerHTML = "❤️ Happy Valentine's Day My Love ❤️";
+        return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    countdown.innerHTML = `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s left for our special day`;
+}, 1000);
+
+
+// TYPEWRITER EFFECT
+const message = 
+`Dear Ihsana,
+
+From the moment you entered my life,
+everything changed in the most beautiful way.
+
+You are my peace after a long day,
+my happiness in small moments,
+and my forever dua answered.
+
+Every second with you is my favorite memory.
+And every Feb 14 reminds me how lucky I am.
+
+Forever yours,
+Your Husband ❤️`;
+
+let i = 0;
+function typeWriter() {
+    if (i < message.length) {
+        document.getElementById("typewriter").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 40);
+    }
+}
+typeWriter();
+
+
+// FLOATING HEARTS
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}, 800);
+
+</script>
+
+</body>
+</html>
